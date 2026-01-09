@@ -1,22 +1,18 @@
-import Database from 'better-sqlite3';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import mysql2 from 'mysql2'
+import { DB_DATA, DB_HOST, DB_PASS, DB_USER } from '../configurations.js'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const connection = mysql2.createConnection({
+    host: DB_HOST,
+    user: DB_USER,
+    password: DB_PASS,
+    database: DB_DATA
+})
 
-const dbPath = path.join(__dirname, 'tienda.db');
-const schemaPath = path.join(__dirname, 'schema.sql');
-const seedPath = path.join(__dirname, 'seed.sql');
+connection.connect((err) =>{
+    if (err){
+        console.error("❌No se pudo realizar la coneccion con la base de datos'", err)
+        return
+    } console.log('✅ Conexion realizada con exito')
+})
 
-const db = new Database(dbPath);
-db.pragma('foreign_keys = ON');
-
-// schema
-db.exec(fs.readFileSync(schemaPath, 'utf8'));
-
-// seed
-db.exec(fs.readFileSync(seedPath, 'utf8'));
-
-export default db;
+export default connection
