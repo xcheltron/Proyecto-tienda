@@ -1,24 +1,19 @@
 import express from 'express';
-import db from './db/db.js'; 
-import path from 'path';
-import { fileURLToPath } from 'url';
+import {PORT} from './configurations.js'
+import db from './db/db.js'
 
 const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.set('views', path.join(__dirname, 'views'));
+//cargar las vistas
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'))
+app.use(express.json());
+
 app.get('/', (req, res) => {
-  res.render('login');
+  res.render('homePage');
 });
 
-app.listen(3000, () => {
-  console.log('Servidor iniciado');
+app.listen(PORT, () => {
+  console.log(`Servidor iniciando en el puerto: ${PORT}`);
 });
