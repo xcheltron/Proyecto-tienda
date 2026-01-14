@@ -8,7 +8,7 @@ export const registerUserController = async (req, res) => {
     try {
         const results = registerUser(user, passHash, rol);
         console.log(results);
-        res.json({message: "Todo salio correctamente"})
+        res.render(HomePage)
     } catch (error) {
         res.send(error)
     }

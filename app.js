@@ -11,7 +11,7 @@ app.use(express.static('public'))
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.render('homePage');
+  res.render('Register');
 });
 
 app.listen(PORT, () => {
