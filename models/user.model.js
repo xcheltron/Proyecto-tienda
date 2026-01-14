@@ -13,3 +13,12 @@ export const registerUser = (user, passwordHash, rol) =>{
         })
     })
 }
+
+export const loigIn = (user, passwordHash) =>{
+    return new Promise ((resolve, reject) =>{
+        connection.query('CALL Inicio_Sesion(?,?)',[user, passwordHash], (err, results) =>{
+            if (err) reject(err)
+                else resolve(results)
+        })
+    })
+}
