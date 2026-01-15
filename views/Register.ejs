@@ -27,39 +27,54 @@
 <body class="text-center">
 
 <main class="form-signin">
-  <form>
-    <img class="mb-4" src="/store.PNG" alt="pene" width="122" height="117">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  <form method="POST" action="/users/register">
+  <img class="mb-4" src="/store.PNG" alt="store" width="122" height="117">
 
-    <div class="form-floating mb-2">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
+  <h1 class="h3 mb-3 fw-normal">Register</h1>
 
-    <div class="form-floating mb-3">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
+  <div class="form-floating mb-2">
+    <input 
+      type="text" 
+      class="form-control" 
+      id="floatingUser"
+      name="user"
+      placeholder="Username"
+      required
+    >
+    <label for="floatingUser">Username</label>
+  </div>
 
-<div class="form-floating mb-3">
-  <select class="form-select" id="floatingRole" aria-label="Select role">
-    <option selected disabled>Choose a role</option>
-    <option value="admin">Admin</option>
-    <option value="caja">Caja</option>
-  </select>
-  <label for="floatingRole">Role</label>
-</div>
+  <div class="form-floating mb-3">
+    <input 
+      type="password" 
+      class="form-control" 
+      id="floatingPassword"
+      name="password"
+      placeholder="Password"
+      required
+    >
+    <label for="floatingPassword">Password</label>
+  </div>
 
-    <div class="form-check mb-3">
-      <input class="form-check-input" type="checkbox" id="rememberMe">
-      <label class="form-check-label" for="rememberMe">
-        Remember me
-      </label>
-    </div>
+  <div class="form-floating mb-3">
+    <select 
+      class="form-select" 
+      id="floatingRole"
+      name="rol"
+      required
+    >
+      <option disabled selected>Choose a role</option>
+      <option value="Admin">Admin</option>
+      <option value="Caja">Caja</option>
+    </select>
+    <label for="floatingRole">Role</label>
+  </div>
 
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2025</p>
-  </form>
+  <button class="w-100 btn btn-lg btn-primary" type="submit">
+    Register
+  </button>
+</form>
+
 </main>
 
 </body>
