@@ -14,9 +14,9 @@ export const registerUser = (user, passwordHash, rol) =>{
     })
 }
 
-export const loigIn = (user, passwordHash) =>{
+export const loigIn = (user) =>{
     return new Promise ((resolve, reject) =>{
-        connection.query('CALL Inicio_Sesion(?,?)',[user, passwordHash], (err, results) =>{
+        connection.query('CALL Inicio_Sesion(?)',[user], (err, results) =>{
             if (err) reject(err)
                 else resolve(results)
         })
