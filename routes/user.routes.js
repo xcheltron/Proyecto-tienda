@@ -1,9 +1,18 @@
 import { registerUserController } from "../controllers/user.controller.js";
+import { isAuth} from "../services/AuthSession.middleware.js";
+import { hasRole } from "../services/AuthRol.middleware.js";
 import express from 'express'
 
-const Route = express.Router();
+const router = express.Router();
 
-Route.get('/', registerUserController);
+router.get('/login', (req, res) => {
+    res.render('login',);
+});
 
+router.get('/register', (req, res) => {
+    res.render('Register',);
+});
 
-export default Route;
+router.post('/register', registerUserController)
+
+export default router;
