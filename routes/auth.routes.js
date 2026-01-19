@@ -6,7 +6,7 @@ import express from 'express'
 const router = express.Router();
 
 
-router.get('/home', isAuth, (req, res) => {
+router.get('/', isAuth, (req, res) => {
     res.render('homepage', {
         user: req.session.user
     });

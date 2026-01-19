@@ -27,17 +27,23 @@
 <body class="text-center">
 
 <main class="form-signin">
-  <form>
+  <form method="post" action="/users/login">
     <img class="mb-4" src="/store.PNG" alt="pene" width="122" height="117">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+    <% if (typeof error !== 'undefined') { %>
+      <div class="alert alert-danger" role="alert">
+    <%= error %>
+  </div>
+    <% } %>
+
     <div class="form-floating mb-2">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" class="form-control" id="floatingInput" name="user" placeholder="name@example.com" required>
       <label for="floatingInput">Email address</label>
     </div>
 
     <div class="form-floating mb-3">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
       <label for="floatingPassword">Password</label>
     </div>
 

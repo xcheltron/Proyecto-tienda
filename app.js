@@ -3,6 +3,7 @@ import session from 'express-session';
 import {PORT} from './configurations.js'
 import userRoutes from './routes/user.routes.js'
 import authRoutes from './routes/auth.routes.js'
+import productsRoutes from './routes/products.routes.js'
 import db from './db/db.js'
 
 const app = express();
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
 app.use('/users', userRoutes)
+app.use('/products', productsRoutes)
 app.use('/', authRoutes)
 
 app.listen(PORT, () => {

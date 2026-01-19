@@ -19,7 +19,7 @@ export const registerUserController = async (req, res) => {
             res.redirect('register', {error: "Ocurrio un error"})
         }
 
-        res.redirect('/home')
+        res.redirect('/')
 
     } catch (error) {
         res.send(error)
@@ -28,25 +28,29 @@ export const registerUserController = async (req, res) => {
 
 export const logInController = async (req, res) => {
     const {user, password} = req.body;
+    console.log(user, password)
     try {
-        const usuario = loigIn(user);
-        
-        if(!usuario){
+        const usuario = await loigIn(user);
+
+        console.log(usuario)
+
+        if(!usuario[0][0]){
             return res.render('login', {error: 'Usuario no existe'})
         }
 
-        const match = await bcrypt.compare(password, usuario.passwordHash)
+        const match = await bcrypt.compare(password, usuario[0][0].passwordHash)
         if (!match){
             return res.render('login', {error: 'Contraseña incorrecta'})
         }
 
         req.session.user = {
-            name: usuario.usuario,
-            rol: usuario.rol
+            name: usuario[0][0].usuario,
+            rol: usuario[0][0].rol
         };
 
-        res.redirect('/home');
+        res.redirect('/');
     } catch (error) {
+        console.log(error)
         res.send(error)
     }
 }
