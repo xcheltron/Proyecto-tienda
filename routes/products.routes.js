@@ -11,4 +11,8 @@ router.get('/categoria', (req, res) =>{
     res.render('Categoria')
 })
 
+router.get('/agregar', (req, res) =>{
+    res.render('Productos')
+})
+
 export default router
