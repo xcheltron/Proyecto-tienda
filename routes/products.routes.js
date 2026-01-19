@@ -15,4 +15,8 @@ router.get('/agregar', (req, res) =>{
     res.render('Productos')
 })
 
+router.get('/consultar', (req, res) =>{
+    res.render('productos_cons')
+})
+
 export default router
