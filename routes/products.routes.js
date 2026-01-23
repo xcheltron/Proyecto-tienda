@@ -19,4 +19,8 @@ router.get('/consultar', (req, res) =>{
     res.render('productos_cons')
 })
 
+router.get('/categorias', (req, res) =>{
+    res.render('Categoria')
+})
+
 export default router
