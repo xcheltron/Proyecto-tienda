@@ -19,6 +19,6 @@ router.get('/logout', isAuth, (req,res) => {
 })
 
 router.post('/register', isAuth, registerUserController)
-router.post('/login', isAuth, logInController)
+router.post('/login', logInController)
 
 export default router;
